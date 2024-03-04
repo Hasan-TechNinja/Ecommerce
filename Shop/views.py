@@ -1,11 +1,20 @@
 from django.shortcuts import render
+from django.views import View
+from . models import Customer, Product, Cart, OrderPlaced
 
 # Create your views here.
-def home(request):
-     return render(request, 'Shop/home.html')
+class ProductView(View):
+ def get(self,request):
+  gentspants = Product.objects.filter(category = 'GP')
+  borkhas = Product.objects.filter(category = "BP")
+  lehenga = Product.objects.filter(category = 'L')
+  saree = Product.objects.filter(category = "S")
+  baby_fashion = Product.objects.filter(category = "BF")
+
+  return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas':borkhas, 'lehenga':lehenga, 'saree': saree, 'baby_fashion':baby_fashion })
 
 def product_detail(request):
- return render(request, 'Shop/productdetail.html')
+ return render(request, 'Shop/productdetail.html')     
 
 def add_to_cart(request):
  return render(request, 'Shop/addtocart.html')
