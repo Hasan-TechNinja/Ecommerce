@@ -6,13 +6,13 @@ from . models import Customer, Product, Cart, OrderPlaced
 class ProductView(View):
  def get(self,request):
   gentspants = Product.objects.filter(category = 'GP')
-  borkhas = Product.objects.filter(category = "BP")
+  borkhas = Product.objects.filter(category = "BK")
   lehenga = Product.objects.filter(category = 'L')
   saree = Product.objects.filter(category = "S")
   baby_fashion = Product.objects.filter(category = "BF")
 
-  return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas':borkhas, 'lehenga':lehenga, 'saree': saree, 'baby_fashion':baby_fashion })
-
+  return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga':lehenga, 'saree': saree, 'baby_fashion':baby_fashion })
+ 
 def product_detail(request):
  return render(request, 'Shop/productdetail.html')     
 
