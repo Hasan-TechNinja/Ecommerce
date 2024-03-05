@@ -100,10 +100,10 @@
     <h2>aiQuest | Borkha</h2>
     <!-- Slider 2 -->
     <div class="owl-carousel" id="slider2">
-        {% for B in borkhas %}
+        {% for b in borkhas %}
         <a href="{% url 'product-detail' %}" class="btn">
-            <div class="item"><img src="{{B.product_image.url}}" alt="Product image" height="200px"><span
-                    class="fw-bold">{{B.title}}</span><br><span class="fs-5">{{B.discounted_price}}</span></div>    
+            <div class="item"><img src="{{b.product_image.url}}" alt="Product image" height="200px"><span
+                    class="fw-bold">{{b.title}}</span><br><span class="fs-5">{{b.discounted_price}}</span></div>    
         </a>
         {% endfor %}
     </div>
