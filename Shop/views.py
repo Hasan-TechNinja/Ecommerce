@@ -13,8 +13,10 @@ class ProductView(View):
 
   return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga':lehenga, 'saree': saree, 'baby_fashion':baby_fashion })
  
-def product_detail(request):
- return render(request, 'Shop/productdetail.html')     
+class ProductDetailView(View):
+ def get(self, request, pk):
+  product = Product.objects.get(pk = pk)
+  return render(request, 'Shop/productdetail.html', {'products': product})     
 
 def add_to_cart(request):
  return render(request, 'Shop/addtocart.html')
