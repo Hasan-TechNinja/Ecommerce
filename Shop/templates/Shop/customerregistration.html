@@ -9,12 +9,12 @@
             <hr>
 
             <form action="" method="post" novalidate class="shadow p-5">
-                {% csrf_token %}
                 {% if messages %}
                 {% for message in messages %}
-                <p>{{message}}</p>
+                <p {% if message.tags %} class = 'alert alert-{{message.tags}} mb-5'>{{message}} {% endif %}</p>
                 {% endfor %}
                 {% endif %}
+                {% csrf_token %}
                 {% for ucf in form %}
                 <div class='form-group mb-3'>
                     {{ucf.label_tag}} {{ucf}} <small class = 'text_danger' >{{ucf.errors | striptags}}</small>
