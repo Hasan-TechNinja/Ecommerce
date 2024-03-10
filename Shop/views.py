@@ -12,8 +12,7 @@ class ProductView(View):
   lehenga = Product.objects.filter(category = 'L')
   saree = Product.objects.filter(category = "S")
   baby_fashion = Product.objects.filter(category = "BF")
-
-  return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga':lehenga, 'saree': saree, 'baby_fashion':baby_fashion })
+  return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga': lehenga, 'saree': saree, 'baby_fashion': baby_fashion })
  
 class ProductDetailView(View):
  def get(self, request, pk):
