@@ -159,4 +159,141 @@
     </div>
 </div>
 <!-- End 3rd Product Slider -->
+
+<!-- Payment Info Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/cc.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/aq.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/st.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/dj.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Payment Info Section -->
+
+
+<!-- 4th Product Slider -->
+<div class="m-3">
+    <h2>aiQuest | Lehenga </h2>
+    <!-- Slider 3 -->
+    <div class="owl-carousel" id="slider3">
+            {% for L in lehenga %}
+            <a href="{% url 'product-detail' L.id %}" class="btn">
+                <div class="item"><img src="{{L.product_image.url}}" alt="Product image" height="200px"><span
+                        class="fw-bold">{{L.title}}</span><br><span class="fs-5">TK. {{L.discounted_price}}</span></div>    
+            </a>
+            {% endfor %}
+    </div>
+</div>
+<!-- End 4ht Product Slider -->
+
+<!-- Payment Info Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/cc.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/aq.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/st.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/dj.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Payment Info Section -->
+
+<!-- 5th Product Slider -->
+<div class="m-3">
+    <h2>aiQuest | Saree </h2>
+    <!-- Slider 3 -->
+    <div class="owl-carousel" id="slider3">
+            {% for S in saree %}
+            <a href="{% url 'product-detail' S.id %}" class="btn">
+                <div class="item"><img src="{{S.product_image.url}}" alt="Product image" height="200px"><span
+                        class="fw-bold">{{S.title}}</span><br><span class="fs-5">TK. {{S.discounted_price}}</span></div>    
+            </a>
+            {% endfor %}
+    </div>
+</div>
+<!-- End 4ht Product Slider -->
+
+<!-- Payment Info Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/cc.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/aq.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/st.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{% static 'Shop/images/payavail/dj.jpg' %}" alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Payment Info Section -->
+
 {% endblock main-content %}
