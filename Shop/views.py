@@ -37,8 +37,12 @@ def orders(request):
 def change_password(request):
  return render(request, 'Shop/changepassword.html')
 
-def lehenga(request):
- return render(request, 'Shop/lehenga.html')
+def lehenga(request, data = None):
+  if data == None:
+   lehengas = Product.objects.filter(category="L")
+  elif data == 'lubnan' or data == 'infinity':
+   lehengas = Product.objects.filter(category = 'L').filter(brand = data)
+   return render(request, 'Shop/lehenga.html', {'lehengas': lehengas})
 
 def login(request):
      return render(request, 'Shop/login.html')

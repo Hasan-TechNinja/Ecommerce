@@ -14,8 +14,10 @@ urlpatterns = [
     path('orders/', views.orders, name='orders'),
     path('changepassword/', views.change_password, name='changepassword'),
     path('lehenga/', views.lehenga, name='lehenga'),
+    path('lehenga/<slug:data>', views.lehenga, name='lehengaitem'),
     path('login/', auth_views.LoginView.as_view(template_name='Shop/login.html',authentication_form = LoginForm), name = 'login'),
     path('registration/', views.CustomerRegistrationView.as_view(), name = 'customerregistration'),
     # path('registration/', views.customerregistration, name='customerregistration'),
     path('checkout/', views.checkout, name='checkout'),
+    path('logout/', auth_views.LogoutView.as_view(next_page = "login"), name = "logout")
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
