@@ -42,7 +42,7 @@ def lehenga(request, data = None):
    lehengas = Product.objects.filter(category="L")
   elif data == 'lubnan' or data == 'infinity':
    lehengas = Product.objects.filter(category = 'L').filter(brand = data)
-   return render(request, 'Shop/lehenga.html', {'lehengas': lehengas})
+  return render(request, 'Shop/lehenga.html', {'lehengas': lehengas})
 
 def login(request):
      return render(request, 'Shop/login.html')
