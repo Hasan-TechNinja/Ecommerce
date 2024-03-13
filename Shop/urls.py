@@ -15,6 +15,8 @@ urlpatterns = [
     path('changepassword/', views.change_password, name='changepassword'),
     path('lehenga/', views.lehenga, name='lehenga'),
     path('lehenga/<slug:data>', views.lehenga, name='lehengaitem'),
+    path('saree/', views.saree, name = 'saree'),
+    path('saree/<slug:data>', views.saree, name = 'sareeiten'),
     path('login/', auth_views.LoginView.as_view(template_name='Shop/login.html',authentication_form = LoginForm), name = 'login'),
     path('registration/', views.CustomerRegistrationView.as_view(), name = 'customerregistration'),
     # path('registration/', views.customerregistration, name='customerregistration'),

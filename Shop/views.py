@@ -42,7 +42,18 @@ def lehenga(request, data = None):
    lehengas = Product.objects.filter(category="L")
   elif data == 'lubnan' or data == 'infinity':
    lehengas = Product.objects.filter(category = 'L').filter(brand = data)
+  # elif data == 'above':
+  #  lehengas = Product.objects.filter(category = 'L').filter(price = data).filter(data <= 10000)
+  #  lehengas = Product.objects.filter(category = 'L').filter(price = data).filter(data >= 10000)
+   
   return render(request, 'Shop/lehenga.html', {'lehengas': lehengas})
+
+def saree(request, data = None):
+ if data == None:
+  saree = Product.objects.filter(category="S")
+ elif data == 'lubnan' or data == 'infinity':
+  saree = Product.objects.filter(category="S").filter(brand = data)
+ return render(request, 'Shop/saree.html', {'saree': saree})
 
 def login(request):
      return render(request, 'Shop/login.html')
