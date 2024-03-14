@@ -66,6 +66,10 @@ def saree(request, data=None):
         saree = Product.objects.filter(category="S")
     elif data == 'lubnan' or data == 'infinity':
         saree = Product.objects.filter(category="S").filter(brand=data)
+    elif data == 'above':
+        saree = Product.objects.filter(category = 'S').filter(discounted_price__gt=1000)
+    elif data == 'below':
+        saree = Product.objects.filter(category = 'S').filter(discounted_price__lt=1000)
     return render(request, 'Shop/saree.html', {'saree': saree})
 
 
