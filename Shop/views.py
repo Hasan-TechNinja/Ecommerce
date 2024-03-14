@@ -1,73 +1,90 @@
 from django.shortcuts import render
 from django.views import View
-from . models import Customer, Product, Cart, OrderPlaced
-from . forms import CustomerRegistrationForm
+from .models import Customer, Product, Cart, OrderPlaced
+from .forms import CustomerRegistrationForm
 from django.contrib import messages
+from django.http import request
+
 
 # Create your views here.
 class ProductView(View):
- def get(self,request):
-  gentspants = Product.objects.filter(category = 'GP')
-  borkhas = Product.objects.filter(category = "BK")
-  lehenga = Product.objects.filter(category = 'L')
-  saree = Product.objects.filter(category = "S")
-  baby_fashion = Product.objects.filter(category = "BF")
-  return render(request, 'Shop/home.html', {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga': lehenga, 'saree': saree, 'baby_fashion': baby_fashion })
- 
+    def get(self, request):
+        gentspants = Product.objects.filter(category='GP')
+        borkhas = Product.objects.filter(category="BK")
+        lehenga = Product.objects.filter(category='L')
+        saree = Product.objects.filter(category="S")
+        baby_fashion = Product.objects.filter(category="BF")
+        return render(request, 'Shop/home.html',
+                      {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga': lehenga, 'saree': saree,
+                       'baby_fashion': baby_fashion})
+
+
 class ProductDetailView(View):
- def get(self, request, pk):
-  product = Product.objects.get(pk = pk)
-  return render(request, 'Shop/productdetail.html', {'products': product})     
+    def get(self, request, pk):
+        product = Product.objects.get(pk=pk)
+        return render(request, 'Shop/productdetail.html', {'products': product})
+
 
 def add_to_cart(request):
- return render(request, 'Shop/addtocart.html')
+    return render(request, 'Shop/addtocart.html')
+
 
 def buy_now(request):
- return render(request, 'Shop/buynow.html')
+    return render(request, 'Shop/buynow.html')
+
 
 def profile(request):
- return render(request, 'Shop/profile.html')
+    return render(request, 'Shop/profile.html')
+
 
 def address(request):
- return render(request, 'Shop/address.html')
+    return render(request, 'Shop/address.html')
+
 
 def orders(request):
- return render(request, 'Shop/orders.html')
+    return render(request, 'Shop/orders.html')
+
 
 def change_password(request):
- return render(request, 'Shop/changepassword.html')
+    return render(request, 'Shop/changepassword.html')
 
-def lehenga(request, data = None):
-  if data == None:
-   lehengas = Product.objects.filter(category="L")
-  elif data == 'lubnan' or data == 'infinity':
-   lehengas = Product.objects.filter(category = 'L').filter(brand = data)
-  # elif data == 'above':
-  #  lehengas = Product.objects.filter(category = 'L').filter(price = data).filter(data <= 10000)
-  #  lehengas = Product.objects.filter(category = 'L').filter(price = data).filter(data >= 10000)
-   
-  return render(request, 'Shop/lehenga.html', {'lehengas': lehengas})
 
-def saree(request, data = None):
- if data == None:
-  saree = Product.objects.filter(category="S")
- elif data == 'lubnan' or data == 'infinity':
-  saree = Product.objects.filter(category="S").filter(brand = data)
- return render(request, 'Shop/saree.html', {'saree': saree})
+def lehenga(request, data=None):
+    if data == None:
+        lehengas = Product.objects.filter(category="L")
+    elif data == 'lubnan' or data == 'infinity':
+        lehengas = Product.objects.filter(category='L').filter(brand=data)
+    elif data == 'above':
+        lehengas = Product.objects.filter(category = 'L').filter(discounted_price__gt=1000)
+    elif data == 'below':
+        lehengas = Product.objects.filter(category = 'L').filter(discounted_price__lt=1000)
+    return render(request, 'Shop/lehenga.html', {'lehengas': lehengas})
+
+
+def saree(request, data=None):
+    if data == None:
+        saree = Product.objects.filter(category="S")
+    elif data == 'lubnan' or data == 'infinity':
+        saree = Product.objects.filter(category="S").filter(brand=data)
+    return render(request, 'Shop/saree.html', {'saree': saree})
+
 
 def login(request):
-     return render(request, 'Shop/login.html')
+    return render(request, 'Shop/login.html')
+
 
 class CustomerRegistrationView(View):
- def get(self, request):
-  form = CustomerRegistrationForm()
-  return render(request, 'Shop/customerregistration.html', {'form': form})
- def post(self, request):
-  form = CustomerRegistrationForm(request.POST)
-  if form.is_valid():
-   form.save()
-   messages.success(request, 'Congratulation! succesfully Registration done')
-  return render(request, 'Shop/customerregistration.html',{'form': form})
+    def get(self, request):
+        form = CustomerRegistrationForm()
+        return render(request, 'Shop/customerregistration.html', {'form': form})
+
+    def post(self, request):
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Congratulation! succesfully Registration done')
+        return render(request, 'Shop/customerregistration.html', {'form': form})
+
 
 def checkout(request):
- return render(request, 'Shop/checkout.html')
+    return render(request, 'Shop/checkout.html')
