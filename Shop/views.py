@@ -50,6 +50,7 @@ def change_password(request):
 
 
 def lehenga(request, data=None):
+    global lehengas
     if data == None:
         lehengas = Product.objects.filter(category="L")
     elif data == 'lubnan' or data == 'infinity':
@@ -62,7 +63,7 @@ def lehenga(request, data=None):
 
 
 def saree(request, data=None):
-    if data == None:
+    if data is None:
         saree = Product.objects.filter(category="S")
     elif data == 'lubnan' or data == 'infinity':
         saree = Product.objects.filter(category="S").filter(brand=data)
