@@ -3,7 +3,7 @@ from Shop import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from . forms import LoginForm
+from . forms import LoginForm, MyPasswordChangeForm
 urlpatterns = [
     path('', views.ProductView.as_view(), name = 'home'),
     path('product-detail/<int:pk>', views.ProductDetailView.as_view(), name='product-detail'),
@@ -12,7 +12,8 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('address/', views.address, name='address'),
     path('orders/', views.orders, name='orders'),
-    path('changepassword/', views.change_password, name='changepassword'),
+    # path('changepassword/', views.change_password, name='changepassword'),
+    path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='Shop/passwordchange.html', form_class=MyPasswordChangeForm), name = 'passwordchange'),
     path('lehenga/', views.lehenga, name='lehenga'),
     path('lehenga/<slug:data>', views.lehenga, name='lehengaitem'),
     path('saree/', views.saree, name = 'saree'),

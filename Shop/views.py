@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import Customer, Product, Cart, OrderPlaced
+from . models import Customer, Product, Cart, OrderPlaced
 from .forms import CustomerRegistrationForm
 from django.contrib import messages
 from django.http import request
