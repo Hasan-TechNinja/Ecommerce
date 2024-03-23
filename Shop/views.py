@@ -15,8 +15,7 @@ class ProductView(View):
         saree = Product.objects.filter(category="S")
         baby_fashion = Product.objects.filter(category="BF")
         return render(request, 'Shop/home.html',
-                      {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga': lehenga, 'saree': saree,
-                       'baby_fashion': baby_fashion})
+                      {'gentspants': gentspants, 'borkhas': borkhas, 'lehenga': lehenga, 'saree': saree, 'baby_fashion': baby_fashion})
 
 
 class ProductDetailView(View):
@@ -56,7 +55,8 @@ class ProfileView(View):
   return render(request, 'Shop/profile.html', {'form':form, 'active':'btn-primary'})
 
 def address(request):
-    return render(request, 'Shop/address.html')
+    add = Customer.objects.filter(user = request.user)
+    return render(request, 'Shop/address.html', {'add':add, 'active':'btn-primary'})
 
 
 def orders(request):
