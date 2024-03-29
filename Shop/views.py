@@ -34,9 +34,7 @@ def add_to_cart(request):
 def buy_now(request):
     return render(request, 'Shop/buynow.html')
 
-
-# def profile(request):
-#     
+   
 class ProfileView(View):
  def get(self, request):
   form = CustomerProfileForm()
